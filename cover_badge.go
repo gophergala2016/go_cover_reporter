@@ -23,7 +23,7 @@ func cover_badge(out io.Writer, percent int) {
 		bedgeHeight        = 25
 		numberOfFrames     = 100
 		delayBetweenFrames = 5
-		lastFrameDelay     = 30
+		lastFrameDelay     = 15
 	)
 
 	anim := gif.GIF{LoopCount: numberOfFrames}
@@ -33,7 +33,7 @@ func cover_badge(out io.Writer, percent int) {
 		img := image.NewPaletted(rect, palette)
 
 		for verticalPosition := 0; verticalPosition < bedgeHeight; verticalPosition++ {
-			for horisontalPosition := 0; horisontalPosition < bedgeLength; horisontalPosition++ {
+			for horisontalPosition := 0; horisontalPosition < i; horisontalPosition++ {
 				img.SetColorIndex(horisontalPosition, verticalPosition, greenIndex)
 			}
 		}
