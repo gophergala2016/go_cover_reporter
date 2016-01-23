@@ -2,4 +2,3 @@ bin
 pkg
 src/github.com
 test.txt
-persist.txt
