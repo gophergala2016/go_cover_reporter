@@ -17,7 +17,7 @@ const (
 	whiteIndex = 3
 )
 
-func cover_badge(out io.Writer, percent int) {
+func coverBadge(out io.Writer, percent int) {
 	const (
 		bedgeLength        = 50
 		bedgeHeight        = 25

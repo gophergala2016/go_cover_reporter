@@ -3,4 +3,4 @@ go:
  - 1.5.3
 
 script:
-  - go test -cover
+  - go run client/go_cover_report_client.go sleepy-dawn-41497.herokuapp.com
