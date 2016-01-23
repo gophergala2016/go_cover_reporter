@@ -1,0 +1,12 @@
+{
+  "name": "go_cover_reporter",
+  "description": "GoCoverReporter",
+  "keywords": [
+    "code coverage",
+    "go",
+    "simple",
+    "beginner"
+  ],
+  "image": "heroku/go:1.5",
+  "mount_dir": "src/github.com/startupit69/go_cover_reporter"
+}
