@@ -1,5 +1,5 @@
 
-[![GoCoverReporter](https://sleepy-dawn-41497.herokuapp.com/demo_badge)](https://sleepy-dawn-41497.herokuapp.com/)
+[![Travis CI](https://travis-ci.org/gophergala2016/go_cover_reporter.svg?branch=master)](https://travis-ci.org/gophergala2016/go_cover_reporter)  [![GoCoverReporter](https://sleepy-dawn-41497.herokuapp.com/demo_badge)](https://sleepy-dawn-41497.herokuapp.com/)
 
 # Project GoCoverReporter
 
