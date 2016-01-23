@@ -4,8 +4,10 @@
   "keywords": [
     "code coverage",
     "go",
+    "gophergala2016",
     "simple",
-    "beginner"
+    "beginner",
+    "heroku"
   ],
   "image": "heroku/go:1.5",
   "mount_dir": "src/github.com/gophergala2016/go_cover_reporter",
