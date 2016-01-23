@@ -1,5 +1,5 @@
 {
-	"ImportPath": ".",
-	"GoVersion": "go1.5",
+	"ImportPath": "github.com/gophergala2016/go_cover_reporter",
+	"GoVersion": "go1.5.3",
 	"Deps": []
 }
