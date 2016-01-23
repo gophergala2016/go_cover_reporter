@@ -8,5 +8,7 @@
     "beginner"
   ],
   "image": "heroku/go:1.5",
-  "mount_dir": "go_cover_reporter"
+  "mount_dir": "src/github.com/gophergala2016/go_cover_reporter",
+  "website": "http://github.com/gophergala2016/go_cover_reporter",
+  "repository": "http://github.com/gophergala2016/go_cover_reporter"
 }

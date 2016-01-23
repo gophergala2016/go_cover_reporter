@@ -1,1 +1,1 @@
-web: bin/go_cover_reporter
+web: go_cover_reporter
