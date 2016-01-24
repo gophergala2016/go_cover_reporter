@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -40,10 +39,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	percentString := string(buffer)
-
-	fmt.Println(percentString)
 	percent, _ := strconv.ParseFloat(strings.TrimSpace(percentString), 64)
-	fmt.Println(percent)
 	coverage := struct{ Percent float64 }{percent}
 	err = pageTemplate.Execute(w, coverage)
 	if err != nil {
@@ -56,8 +52,8 @@ var pageTemplate = template.Must(template.New("pageTemplate").Parse(`
 <!DOCTYPE html>
 <html>
  <head>
-	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	  <script src="http://d3js.org/d3.v3.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.13/d3.min.js"></script>
 	  <style>
 	    body {
 	      font-family: Helvetica, Arial, sans-serif;
