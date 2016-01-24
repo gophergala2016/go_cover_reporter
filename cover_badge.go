@@ -8,19 +8,18 @@ import (
 	"io"
 )
 
-var palette = []color.Color{color.Black, color.RGBA{0xff, 0x00, 0x00, 0xff}, color.RGBA{0x00, 0xff, 0x00, 0xff}, color.White}
+var palette = []color.Color{color.RGBA{0x5b, 0x5b, 0x5b, 0xff}, color.RGBA{0x4b, 0xc5, 0x1d, 0xff}, color.White}
 
 const (
-	blackIndex = 0
-	redIndex   = 1
-	greenIndex = 2
-	whiteIndex = 3
+	grayIndex  = 0
+	greenIndex = 1
+	whiteIndex = 2
 )
 
 func coverBadge(out io.Writer, percent int) {
 	const (
-		bedgeLength        = 50
-		bedgeHeight        = 25
+		badgeLength        = 90
+		badgeHeight        = 20
 		numberOfFrames     = 100
 		delayBetweenFrames = 5
 		lastFrameDelay     = 15
@@ -29,10 +28,10 @@ func coverBadge(out io.Writer, percent int) {
 	anim := gif.GIF{LoopCount: numberOfFrames}
 
 	for i := 0; i < numberOfFrames; i++ {
-		rect := image.Rect(0, 0, bedgeLength, bedgeHeight)
+		rect := image.Rect(0, 0, badgeLength, badgeHeight)
 		img := image.NewPaletted(rect, palette)
 
-		for verticalPosition := 0; verticalPosition < bedgeHeight; verticalPosition++ {
+		for verticalPosition := 0; verticalPosition < badgeHeight; verticalPosition++ {
 			for horisontalPosition := 0; horisontalPosition < i; horisontalPosition++ {
 				img.SetColorIndex(horisontalPosition, verticalPosition, greenIndex)
 			}
