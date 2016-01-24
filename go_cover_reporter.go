@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -39,7 +40,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	percentString := string(buffer)
+
+	fmt.Println(percentString)
 	percent, _ := strconv.ParseFloat(strings.TrimSpace(percentString), 64)
+	fmt.Println(percent)
 	coverage := struct{ Percent float64 }{percent}
 	err = pageTemplate.Execute(w, coverage)
 	if err != nil {
@@ -194,7 +198,7 @@ func receiver(rw http.ResponseWriter, req *http.Request) {
 
 	numericalValue := re.FindString(string(t.Body))
 
-	_, err = io.WriteString(file, numericalValue[:len(numericalValue)])
+	_, err = io.WriteString(file, numericalValue[:len(numericalValue)-1])
 	if err != nil {
 		log.Fatalln(err)
 	}
