@@ -81,6 +81,7 @@ func coverBadge(out io.Writer, percent float64) {
 		img := image.NewPaletted(rect, palette)
 
 		for verticalPosition := 0; verticalPosition < badgeHeight; verticalPosition++ {
+
 			var line int
 			if i < int(math.Floor(percent)) {
 				line = i
