@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+	"time"
 )
 
 type message struct {
@@ -27,6 +28,12 @@ func main() {
 	http.HandleFunc("/", handler) // each request calls handler function
 	http.HandleFunc("/receiver", receiver)
 	http.HandleFunc("/demo_badge", func(w http.ResponseWriter, r *http.Request) {
+		date := time.Now().Format(http.TimeFormat)
+		log.Printf("%v", date)
+		w.Header().Set("Content-Type", "image/gif")
+		w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+		w.Header().Set("Date", date)
+		w.Header().Set("Expires", date)
 		coverBadge(w, readPercentageFromFile())
 	})
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
