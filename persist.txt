@@ -1,3 +1,1 @@
-PASS
-coverage: 2.6% of statements
-ok  	_/home/ivan/HACKATHON/go_cover_reporter	0.007s
+2.2%
