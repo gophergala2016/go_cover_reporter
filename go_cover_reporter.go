@@ -59,6 +59,7 @@ func readPercentageFromFile() (i float64) {
 
 	percentString := string(buffer)
 	percent, _ := strconv.ParseFloat(strings.TrimSpace(percentString), 64)
+	log.Println("percent>>>>>" + strconv.FormatFloat(percent, 'f', 2, 64))
 
 	return percent
 }
