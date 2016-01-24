@@ -1,5 +1,19 @@
 {
 	"ImportPath": "github.com/gophergala2016/go_cover_reporter",
 	"GoVersion": "go1.5.3",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/golang/freetype",
+			"Comment": "release-120-gf29eb11",
+			"Rev": "f29eb116deb328d02ee5c573f02d442ca67d5532"
+		},
+		{
+			"ImportPath": "golang.org/x/image/font",
+			"Rev": "7c492694a6443a92fd349fda0c4c7b587040f161"
+		},
+		{
+			"ImportPath": "golang.org/x/image/math/fixed",
+			"Rev": "7c492694a6443a92fd349fda0c4c7b587040f161"
+		}
+	]
 }

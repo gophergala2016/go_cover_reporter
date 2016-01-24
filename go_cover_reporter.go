@@ -1,3 +1,4 @@
+// go_cover_reporter.go
 package main
 
 import (
@@ -26,12 +27,21 @@ func main() {
 	http.HandleFunc("/", handler) // each request calls handler function
 	http.HandleFunc("/receiver", receiver)
 	http.HandleFunc("/demo_badge", func(w http.ResponseWriter, r *http.Request) {
-		coverBadge(w, 0)
+		coverBadge(w, readPercentageFromFile())
 	})
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	coverage := struct{ Percent float64 }{readPercentageFromFile()}
+	err := pageTemplate.Execute(w, coverage)
+	if err != nil {
+		log.Print(err)
+	}
+
+}
+
+func readPercentageFromFile() (i float64) {
 
 	buffer, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -40,12 +50,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	percentString := string(buffer)
 	percent, _ := strconv.ParseFloat(strings.TrimSpace(percentString), 64)
-	coverage := struct{ Percent float64 }{percent}
-	err = pageTemplate.Execute(w, coverage)
-	if err != nil {
-		log.Print(err)
-	}
 
+	return percent
 }
 
 var pageTemplate = template.Must(template.New("pageTemplate").Parse(`

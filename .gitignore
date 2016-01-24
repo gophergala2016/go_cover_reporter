@@ -2,3 +2,4 @@ bin
 pkg
 src/github.com
 test.txt
+go_cover_reporter
