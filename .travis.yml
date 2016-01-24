@@ -3,4 +3,4 @@ go:
  - 1.5.3
 
 script:
-  - go run client/go_cover_report_client.go sleepy-dawn-41497.herokuapp.com
+  - go run client/go_cover_report_client.go ancient-beach-91563.herokuapp.com
