@@ -210,6 +210,8 @@ func receiver(rw http.ResponseWriter, req *http.Request) {
 
 	numericalValue := re.FindString(string(t.Body))
 
+	log.Println(numericalValue)
+
 	_, err = io.WriteString(file, numericalValue[:len(numericalValue)-1])
 	if err != nil {
 		log.Fatalln(err)
