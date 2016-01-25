@@ -1,5 +1,5 @@
 
-[![Travis CI](https://travis-ci.org/gophergala2016/go_cover_reporter.svg?branch=master)](https://travis-ci.org/gophergala2016/go_cover_reporter)  [![GoCoverReporter](https://ancient-beach-91563.herokuapp.com/demo_badge)](https://ancient-beach-91563.herokuapp.com/)
+[![Travis CI](https://travis-ci.org/gophergala2016/go_cover_reporter.svg?branch=master)](https://travis-ci.org/gophergala2016/go_cover_reporter)  [![GoCoverReporter](https://ancient-beach-91563.herokuapp.com/coverage)](https://ancient-beach-91563.herokuapp.com/)
 
 # Project GoCoverReporter
 

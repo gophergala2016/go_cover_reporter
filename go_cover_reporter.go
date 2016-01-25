@@ -20,24 +20,14 @@ type message struct {
 	Body string
 }
 
-const (
-	filename = "persist.txt"
+var (
+	Filename = "persist.txt"
 )
 
 func main() {
 	http.HandleFunc("/", handler) // each request calls handler function
 	http.HandleFunc("/receiver", receiver)
-	http.HandleFunc("/demo_badge", func(w http.ResponseWriter, r *http.Request) {
-		date := time.Now().Format(http.TimeFormat)
-		log.Printf("%v", date)
-		w.Header().Set("Content-Type", "image/gif")
-		w.Header().Set("Cache-Control", "no-cache")
-		w.Header().Set("Cache-Control", "no-store")
-		w.Header().Set("Cache-Control", "private")
-		w.Header().Set("Date", date)
-		w.Header().Set("Expires", date)
-		coverBadge(w, readPercentageFromFile())
-	})
+	http.HandleFunc("/coverage", badge)
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
 
@@ -50,16 +40,27 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func badge(w http.ResponseWriter, r *http.Request) {
+	date := time.Now().Format(http.TimeFormat)
+
+	w.Header().Set("Content-Type", "image/gif")
+	w.Header().Set("Cache-Control", "no-cache")
+	w.Header().Set("Cache-Control", "no-store")
+	w.Header().Set("Cache-Control", "private")
+	w.Header().Set("Date", date)
+	w.Header().Set("Expires", date)
+	coverBadge(w, readPercentageFromFile())
+}
+
 func readPercentageFromFile() (i float64) {
 
-	buffer, err := ioutil.ReadFile(filename)
+	buffer, err := ioutil.ReadFile(Filename)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	percentString := string(buffer)
 	percent, _ := strconv.ParseFloat(strings.TrimSpace(percentString), 64)
-	log.Println("percent>>>>>" + strconv.FormatFloat(percent, 'f', 2, 64))
 
 	return percent
 }
@@ -188,8 +189,7 @@ var pageTemplate = template.Must(template.New("pageTemplate").Parse(`
 `))
 
 func receiver(rw http.ResponseWriter, req *http.Request) {
-
-	file, err := os.Create(filename)
+	file, err := os.Create(Filename)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -198,7 +198,6 @@ func receiver(rw http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	log.Println(string(body))
 
 	var t message
 	err = json.Unmarshal(body, &t)
@@ -210,17 +209,10 @@ func receiver(rw http.ResponseWriter, req *http.Request) {
 
 	numericalValue := re.FindString(string(t.Body))
 
-	log.Println(numericalValue)
-
 	_, err = io.WriteString(file, numericalValue[:len(numericalValue)-1])
 	if err != nil {
 		log.Fatalln(err)
 	}
 	file.Close()
 
-	log.Println(t.Body)
-}
-
-func dummyFunction(i int, j int) int {
-	return i + j
 }
